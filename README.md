@@ -8,3 +8,10 @@ from the star` held on 11th of January 2024.
 ```
 git clone --depth 1 https://github.com/dpopchev/devbg2024.git
 ```
+
+## Agenda
+
+- Software engineering background: NATO conference 68 and UNIX vs agile
+- Test vs Behaviour driven development
+- OOP vs FP
+- Metaclasses (career development vs reduction)
