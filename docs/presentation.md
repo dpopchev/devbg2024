@@ -10,8 +10,6 @@ date:
 
 ---
 
-
-
 # What's AI?
 
 - Artificial Intelligence- The ability of machine to think and behave like humans.
@@ -35,7 +33,7 @@ date:
 
 # Let's Build that
 
-​```jsx
+```jsx
 Bot.send("Are you going out to play?")
 async function respond(inputText){
     if (inputText == "yes"){
@@ -46,15 +44,13 @@ async function respond(inputText){
     }
 
  }
-\```     <REMOVE THE \>
+```
 
 What we learned. - Bot.send() method - if else statements.
 
 # Build a basic greetings bot
 
 ![Flow chart](img/Untitled 2.png)
-
-
 
 # Benefits of AI Playground
 

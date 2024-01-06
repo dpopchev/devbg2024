@@ -52,7 +52,7 @@ $(stamp_dir):
 	@$(call add_gitignore,$@)
 	@mkdir -p $@
 
-.PHONY: clean-stampdir
+.PHONY: clean-stampdir ###
 clean-stampdir:
 	@rm -rf $(stamp_dir)
 	@$(call del_gitignore,$(stamp_dir))
@@ -60,9 +60,20 @@ clean-stampdir:
 src_dir := src
 tests_dir := tests
 dist_dir := dist
+build_dir := build
+docs_dir := docs
 
-$(src_dir) $(tests_dir):
+$(src_dir) $(tests_dir) $(docs_dir):
 	@mkdir -p $@
+
+$(build_dir):
+	@mkdir -p $@
+	@$(call add_gitignore,$@)
+
+.PHONY: clean-build ###
+clean-build:
+	@rm -rf $(build_dir)
+	@$(call del_gitignore,$(build_dir))
 
 .PHONY: setup ### install venv and its requirements for package development
 setup: install-venv install-requirements
@@ -444,6 +455,15 @@ TAGS:
 	@ctags --languages=python --recurse
 	@$(call log,'creating tags file',$(done))
 
+presentation_name := presentation
+
+.PHONY: presentation ### create the presentation
+presentation: build/$(presentation_name).pdf
+
+vpath %.md $(docs_dir)
+build/$(presentation_name).pdf: $(presentation_name).md | $(build_dir)
+	@pandoc -t beamer $< -o $@
+
 .PHONY: clean-TAGS
 clean-TAGS:
 	@rm --force tags
@@ -452,5 +472,5 @@ clean-TAGS:
 
 .PHONY: clean
 clean: clean-package clean-venv clean-stampdir clean-sample-code
-clean: clean-TAGS distclean clean-coverage
+clean: clean-TAGS distclean clean-coverage clean-build
 	@rm -rf __pycache__ .pytest_cache
