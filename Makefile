@@ -67,7 +67,7 @@ $(src_dir) $(tests_dir):
 .PHONY: setup ### install venv and its requirements for package development
 setup: install-venv install-requirements
 
-package := mypackage
+package := devbg2024
 venv := .venv
 pyseed ?= $(shell command -v python3 2> /dev/null)
 python := $(venv)/bin/python
