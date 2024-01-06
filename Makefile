@@ -52,7 +52,7 @@ $(stamp_dir):
 	@$(call add_gitignore,$@)
 	@mkdir -p $@
 
-.PHONY: clean-stampdir ###
+.PHONY: clean-stampdir ### reset target-less phases tracked with stamps
 clean-stampdir:
 	@rm -rf $(stamp_dir)
 	@$(call del_gitignore,$(stamp_dir))
@@ -228,6 +228,7 @@ $(sample_readme):
 	@echo '```' >> $@
 	@echo 'git clone --depth 1 <URL>' >> $@
 	@echo 'cd $(subst _,-,$(package))' >> $@
+	@echo 'make development' >> $@
 	@echo 'make check' >> $@
 	@echo '```' >> $@
 	@echo 'If more context is needed then rename section to `Installation`.' >> $@
