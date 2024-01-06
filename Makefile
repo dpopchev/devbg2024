@@ -366,8 +366,8 @@ coverage_dir := .coverage
 
 .PHONY: coverage ### evaluate test coverage
 coverage: development
-	@$(python) -m $(coverage_module)
 	@$(call add_gitignore,$(coverage_dir))
+	@$(python) -m $(coverage_module)
 	@$(call log,'test coverage',$(done))
 
 .PHONY: clean-coverage ###

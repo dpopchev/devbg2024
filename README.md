@@ -21,7 +21,7 @@ make presentation
 
 ## Acknowledgement
 
-- [Glided Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
+- [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
 
 ## License
 
