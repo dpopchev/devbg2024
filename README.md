@@ -19,3 +19,7 @@ git clone --depth 1 https://github.com/dpopchev/devbg2024.git
 ## Acknowledgement
 
 - [Glided Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
