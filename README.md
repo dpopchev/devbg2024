@@ -7,6 +7,9 @@ from the star` held on 11th of January 2024.
 
 ```
 git clone --depth 1 https://github.com/dpopchev/devbg2024.git
+cd devbg2024
+make development
+make check
 ```
 
 ## Agenda
@@ -22,4 +25,4 @@ git clone --depth 1 https://github.com/dpopchev/devbg2024.git
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](LICENSE)
