@@ -15,3 +15,7 @@ git clone --depth 1 https://github.com/dpopchev/devbg2024.git
 - Test vs Behaviour driven development
 - OOP vs FP
 - Metaclasses (career development vs reduction)
+
+## Acknowledgement
+
+- [Glided Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
