@@ -1,7 +1,6 @@
 # devbg2024
 
-Notes and code for my talk `Python: Metaprogramming or what I should have known
-from the start` held on 11th of January 2024.
+Notes and code for my [devbg talk](https://dev.bg/event/python-metaprogramming-or-what-i-should-have-known-from-the-start/) held on 11th of January 2024.
 
 ## Install
 
