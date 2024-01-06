@@ -461,8 +461,11 @@ presentation_name := presentation
 presentation: build/$(presentation_name).pdf
 
 vpath %.md $(docs_dir)
-build/$(presentation_name).pdf: $(presentation_name).md | $(build_dir)
-	@pandoc -t beamer $< -o $@
+conversion_options := $(docs_dir)/options.yaml
+pandoc := pandoc --defaults $(conversion_options)
+
+build/$(presentation_name).pdf: $(presentation_name).md $(conversion_options) | $(build_dir)
+	@$(pandoc) -t beamer $< -o $@
 
 .PHONY: clean-TAGS
 clean-TAGS:
