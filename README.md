@@ -2,7 +2,14 @@
 
 Notes and code for my [devbg talk](https://dev.bg/event/python-metaprogramming-or-what-i-should-have-known-from-the-start/).
 
-## Install
+## Installation
+
+### Requirements
+
+- pandoc
+- some tex libs, tbd
+
+### Install
 
 ```
 git clone --depth 1 https://github.com/dpopchev/devbg2024.git
