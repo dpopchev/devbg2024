@@ -66,6 +66,21 @@ my @sorted = map  { $_->[0] }
 
 # Sample slides
 
+## Overalys
+
+\only<1,3>{
+This text appears on the first and third versions of the slide, but not the second.
+INSIDE HERE YOU USE ANY LATEX
+INSTEAD OF only you can use onslide etc
+}
+
+This uses beamer's highlighting command to \alert<2>{draw attention here}, but only on the second slide.
+
+\note<2>{
+
+Notes can also have overlay specs.
+}
+
 ## Include image
 
 ![Flow chart](img/Untitled 1.png){ width=250px }
