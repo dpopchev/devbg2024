@@ -49,18 +49,22 @@ my @sorted = map  { $_->[0] }
 
 ## Resources
 
+###
+
 - [`dpopchev/devbg2024`](https://github.com/dpopchev/devbg2024) repo at github
 - [Gilded Rose Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
-- influence
-  - David Beazley
-  - Scott Wlaschin
-  - Kevlin Henney
-  - Mark Seemann
-  - Brandon Rhodes
-  - Martin Fowler
-  - Dave Farley
-  - Raymond Hettinger
-  - ...
+
+###
+
+- David Beazley
+- Scott Wlaschin
+- Kevlin Henney
+- Mark Seemann
+- Brandon Rhodes
+- Martin Fowler
+- Dave Farley
+- Raymond Hettinger
+- ...
 
 # Gilded Rose Kata
 
