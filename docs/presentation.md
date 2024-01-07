@@ -72,7 +72,7 @@ my @sorted = map  { $_->[0] }
 
 - `Gilded Rose` is a small inn ran by Allison
 - Trade finest goods on the side
-- Inventory system was implemented by Leeroy
+- Inventory system was implemented by a guy named Leeroy
 
 ## Software Crisis
 
@@ -115,7 +115,7 @@ months, with a preference to the shorter timescale.
 
 ### What they want
 
-- Control quality change
+- Control quality change rate
 - Quality maximum and minimums
 
 # Sample slides
