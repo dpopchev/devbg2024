@@ -13,10 +13,10 @@ toc: true
 
 ## Metaclasses
 
-### Tim Peters
-
-*Metaclasses are deeper magic than 99% of users should ever worry about.\
-If you wonder whether you need them, you don’t.*
+###
+*Metaclasses are deeper magic than 99 of users should ever worry about.
+If you wonder whether you need them, you don’t.*\
+\hfill --Time Peters
 
 ### Data model uses recommendation
 
