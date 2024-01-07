@@ -74,8 +74,49 @@ my @sorted = map  { $_->[0] }
 - Trade finest goods on the side
 - Inventory system was implemented by Leeroy
 
+## Software Crisis
+
+### Formulation
+
+*The basic problem is that certain classes of systems are placing demands on us
+which are beyond our capabilities and our theories and methods of design and
+production at this time...\
+...We should not expect the production of such systems to be easy.*\
+\hfill Kenneth Kolence, pg 71
+
+## Advices
+
+### NATO Conference 68
+
+Define a subset of the system which is small enough to bring to an operational
+state...then build on that subsystem. This strategy requires that the system be
+designed in modules which can be realized, tested, and modified independently.
+
+### UNIX Philosophy
+
+Write programs that do one thing and do it well. Write programs to work
+together. Write programs to handle text streams, because that is an universal
+interface.
+
+### Agile manifesto
+
+Deliver working software frequently, from a couple of weeks to a couple of
+months, with a preference to the shorter timescale.
+
 ## Requirements
 
+### What they have
+
+- System tracking the inventory of items
+- Item sell in time measured in decreasing number of days
+- Item quality measuring how valuable it is
+- At end of each day the system lowers both remaining time and quality
+
+
+### What they want
+
+- Control quality change
+- Quality maximum and minimums
 
 # Sample slides
 
