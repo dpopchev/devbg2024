@@ -111,8 +111,7 @@ months, with a preference to the shorter timescale.
 - System tracking the inventory of items
 - Item sell in time measured in decreasing number of days
 - Item quality measuring how valuable it is
-- At end of each day the system lowers both remaining time and quality
-
+- System lowers both remaining time and quality everyday
 
 ### What they want
 
