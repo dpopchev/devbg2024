@@ -5,6 +5,7 @@ subtitle: what I should have known from the start
 author: Dimitar Popchev
 theme: Frankfurt
 date: \today
+fontsize: 8pt
 section-titles: false
 toc: true
 ---
