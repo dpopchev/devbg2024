@@ -72,7 +72,7 @@ my @sorted = map  { $_->[0] }
 
 - `Gilded Rose` is a small inn ran by Allison
 - Trade finest goods on the side
-- Inventory system was implemented by Leeroy, who moved on to new adventures
+- Inventory system was implemented by Leeroy
 
 ## Requirements
 
