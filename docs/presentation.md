@@ -59,6 +59,7 @@ my @sorted = map  { $_->[0] }
   - Brandon Rhodes
   - Martin Fowler
   - Dave Farley
+  - Raymond Hettinger
   - ...
 
 # Gilded Rose Kata
