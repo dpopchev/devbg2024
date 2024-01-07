@@ -18,7 +18,7 @@ toc: true
 If you wonder whether you need them, you don’t.*\
 \hfill --Time Peters
 
-### Data model uses recommendation
+### Data model 'uses for'
 
 - *Common uses for sets...*, an entry
 - *Uses for metaclasses*, an subsubsection
@@ -63,6 +63,15 @@ my @sorted = map  { $_->[0] }
   - ...
 
 # Gilded Rose Kata
+
+## Introduction
+
+- `Gilded Rose` is a small inn ran by Allison
+- Trade finest goods on the side
+- Inventory system was implemented by Leeroy, who moved on to new adventures
+
+## Requirements
+
 
 # Sample slides
 
