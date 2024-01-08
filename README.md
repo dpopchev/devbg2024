@@ -26,6 +26,17 @@ make presentation
 - OOP vs FP
 - Metaclasses (career development vs reduction)
 
+## Usage
+
+### Live presentation rebuild
+
+While making the presentation I found useful to trigger build of the
+presentation on changes under `docs`.
+
+```bash
+ls docs/* | entr sh -c 'echo compile: $(date +%H:%M:%S) && make presentation && echo compile: end && pkill -HUP mupdf && echo REFRESHED'
+```
+
 ## Acknowledgement
 
 - [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
