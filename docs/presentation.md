@@ -7,8 +7,10 @@ institute: GlobalFoundries
 theme: Frankfurt
 date: \today
 fontsize: 8pt
+fontfamilyoptions: default
 section-titles: false
 toc: true
+aspectratio: 169
 ---
 
 # Agenda
