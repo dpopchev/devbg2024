@@ -3,6 +3,7 @@ topic: TopicMetaclasses
 title: Metaclasses
 subtitle: what I should have known from the start
 author: Dimitar Popchev
+institute: GlobalFoundries
 theme: Frankfurt
 date: \today
 fontsize: 8pt
@@ -12,7 +13,7 @@ toc: true
 
 # Agenda
 
-## Metaclasses
+## Metaprogramming
 
 ###
 *Metaclasses are deeper magic than 99 of users should ever worry about.
