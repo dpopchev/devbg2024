@@ -121,6 +121,22 @@ months, with a preference to the shorter timescale.
 - Control quality change rate
 - Quality maximum and minimums
 
+# Refactoring
+
+## Lookup
+
+```python:src/devbg2024/gilded_rose.py
+# src/devbg2024/gilded_rose.py
+class GildedRose(object):
+    def __init__(self, items):
+        self.items = items
+    def update_quality(self):
+        ...
+class Item:
+    def __init__(self, name, sell_in, quality):
+        ...
+```
+
 # Sample slides
 
 ## SAMPLE SLIDES
