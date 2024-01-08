@@ -165,7 +165,7 @@ Notes can also have overlay specs.
 
 ## Code
 
-```jsx
+```{#code1 .jsx}
 Bot.send("Are you going out to play?")
 async function respond(inputText){
     if (inputText == "yes"){
@@ -179,6 +179,8 @@ async function respond(inputText){
 ```
 
 What we learned. - Bot.send() method - if else statements.
+\
+We should be able to refer [code](#code1)
 
 ## Math
 
