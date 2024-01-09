@@ -2,11 +2,13 @@ import pytest
 from devbg2024.gilded_rose import Item, GildedRose
 from typing import NamedTuple
 
+ITEM_ID = 'Aged Brie'
+
 class SellInDecreaseRates(NamedTuple):
     normal: int = 1
 
 class QualityDegradeRates(NamedTuple):
-    normal: int = 1
+    normal: int = -1
     expired: int = 2
 
 class QualityLimits(NamedTuple):
@@ -21,30 +23,9 @@ QUALITY_LIMITS = QualityLimits()
 def inventory():
     return GildedRose([])
 
-def test_sell_in_decrease_rate(inventory: GildedRose):
-    init_sell_in = 10
-    item = Item('item', sell_in=init_sell_in, quality=10)
-    inventory.items.append(item)
-    inventory.update_quality()
-    assert item.sell_in == init_sell_in - SELL_IN_DECREASE.normal
-
-def test_quality_degrade_rate_within_sell_in(inventory: GildedRose):
+def test_quality_increases_with_time(inventory: GildedRose):
     init_quality = 10
-    item = Item('item', sell_in=10, quality=init_quality)
+    item = Item(ITEM_ID, sell_in=10, quality=init_quality)
     inventory.items.append(item)
     inventory.update_quality()
     assert item.quality == init_quality - QUALITY_DEGRADE.normal
-
-def test_quality_degrade_rate_after_sell_in(inventory: GildedRose):
-    init_quality = 10
-    item = Item('item', sell_in=0, quality=init_quality)
-    inventory.items.append(item)
-    inventory.update_quality()
-    assert item.quality == init_quality - QUALITY_DEGRADE.expired
-
-def test_quality_is_never_negative(inventory: GildedRose):
-    init_quality = 0
-    item = Item('item', sell_in=0, quality=init_quality)
-    inventory.items.append(item)
-    inventory.update_quality()
-    assert item.quality >= 0
