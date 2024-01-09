@@ -8,7 +8,7 @@ class SellInDecreaseRates(NamedTuple):
     normal: int = 1
 
 class QualityDegradeRates(NamedTuple):
-    normal: int = 1
+    normal: int = -1
     ten_days_mark: int = -2
     five_days_mark: int = -3
 
