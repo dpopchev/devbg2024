@@ -41,3 +41,10 @@ def test_quality_degrade_rate_after_sell_in(inventory: GildedRose):
     inventory.items.append(item)
     inventory.update_quality()
     assert item.quality == init_quality - QUALITY_DEGRADE.expired
+
+def test_quality_is_never_negative(inventory: GildedRose):
+    init_quality = 0
+    item = Item('item', sell_in=0, quality=init_quality)
+    inventory.items.append(item)
+    inventory.update_quality()
+    assert item.quality >= 0
