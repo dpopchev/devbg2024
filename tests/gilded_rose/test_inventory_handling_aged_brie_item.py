@@ -29,3 +29,10 @@ def test_quality_increases_with_time(inventory: GildedRose):
     inventory.items.append(item)
     inventory.update_quality()
     assert item.quality == init_quality - QUALITY_DEGRADE.normal
+
+def test_quality_has_maximum_limit(inventory: GildedRose):
+    init_quality = 50
+    item = Item(ITEM_ID, sell_in=10, quality=init_quality)
+    inventory.items.append(item)
+    inventory.update_quality()
+    assert item.quality == QUALITY_LIMITS.max
