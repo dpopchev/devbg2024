@@ -2,33 +2,26 @@ import pytest
 from devbg2024.gilded_rose import Item, GildedRose
 from typing import NamedTuple
 
-class DegradeRates(NamedTuple):
-    normal: int
-    expired: int
+class DecreaseRates(NamedTuple):
+    normal: int = 1
+    sulfuras: int = 0
 
-DEGRADE_RATES = DegradeRates(1, 2)
+DEGRADE_RATES = DecreaseRates()
 
 @pytest.fixture
 def inventory():
     return GildedRose([])
 
-def test_degrade_rate_before_sell_in_has_passed_is_normal(inventory: GildedRose):
-    initial_quality = 5
-    item = Item('item', sell_in=1, quality=initial_quality)
+def test_sell_in_decrease_rate_default_is_normal(inventory: GildedRose):
+    initial_sell_in = 5
+    item = Item('item', sell_in=initial_sell_in, quality=10)
     inventory.items.append(item)
     inventory.update_quality()
-    assert item.quality == initial_quality - DEGRADE_RATES.normal
+    assert item.sell_in == initial_sell_in - DEGRADE_RATES.normal
 
-def test_degrade_rate_after_sell_in_has_passed_is_expired(inventory: GildedRose):
-    initial_quality = 5
-    item = Item('item', sell_in=0, quality=initial_quality)
+def test_sell_in_decrease_rate_for_sulfuras_is_applied(inventory: GildedRose):
+    initial_sell_in = 5
+    item = Item('Sulfuras', sell_in=initial_sell_in, quality=10)
     inventory.items.append(item)
     inventory.update_quality()
-    assert item.quality == initial_quality - DEGRADE_RATES.expired
-
-def test_degrade_rate_of_aged_brie_is_negative(inventory: GildedRose):
-    initial_quality = 5
-    item = Item('Aged Brie', sell_in=1, quality=initial_quality)
-    inventory.items.append(item)
-    inventory.update_quality()
-    assert item.quality > initial_quality
+    assert item.sell_in == initial_sell_in - DEGRADE_RATES.sulfuras
