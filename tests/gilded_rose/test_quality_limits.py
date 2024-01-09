@@ -20,8 +20,8 @@ def test_when_quality_reaches_min_remains_the_same(inventory: GildedRose):
     assert item.quality == QUALITY_LIMITS.min
 
 def test_when_quality_reaches_max_remains_the_same(inventory: GildedRose):
+    """Aged Brie quality rate is negative"""
     initial_quality = QUALITY_LIMITS.max
-    # Aged Brie degrade quality rate is negative
     item = Item('Aged Brie', sell_in=1, quality=initial_quality)
     inventory.items.append(item)
     inventory.update_quality()
