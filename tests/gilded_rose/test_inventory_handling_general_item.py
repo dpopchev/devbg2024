@@ -5,6 +5,7 @@ import devbg2024.objects_inventory as oop_inventory
 import devbg2024.item_structs as struct_items
 import devbg2024.structs_inventory as struct_inventory
 import devbg2024.item_validated as validated_items
+import devbg2024.item_type as typed_items
 from typing import NamedTuple
 
 ITEM_ID = 'General Item'
@@ -29,11 +30,16 @@ QUALITY_LIMITS = QualityLimits()
     (oop_items.Item, oop_inventory.GildedRose),
     (struct_items.Item, struct_inventory.GildedRose),
     (validated_items.Item, struct_inventory.GildedRose),
-    pytest.param((validated_items.Item, original.GildedRose), marks=pytest.mark.xfail(reason='failing test raises item rule violation'))
+    pytest.param((validated_items.Item, original.GildedRose), marks=pytest.mark.xfail(reason='failing test raises item rule violation')),
+    (typed_items.Item, struct_inventory.GildedRose),
+    pytest.param((typed_items.Item, original.GildedRose), marks=pytest.mark.xfail(reason='failing test raises item rule violation'))
     ],
     ids=['original', 'oop', 'fp',
          'validators with struct inventory',
-         'validators with original inventory'])
+         'validators with original inventory',
+         'type with struct inventory',
+         'type with original inventory',
+    ])
 def make_testcase(request):
     def factory(name, sell_in, quality):
         item = request.param[0](name, sell_in, quality)
