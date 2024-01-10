@@ -34,6 +34,7 @@ class GildedRose(object):
                         item.quality = item.quality + 1
     def tail(self):
         return self.items[-1]
+
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
