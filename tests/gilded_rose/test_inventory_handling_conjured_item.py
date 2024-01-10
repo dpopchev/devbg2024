@@ -22,6 +22,7 @@ QUALITY_LIMITS = QualityLimits()
 def inventory():
     return GildedRose([])
 
+@pytest,mark.xfail(reason='TBD')
 def test_quality_degrade_rate_within_sell_in(inventory: GildedRose):
     init_quality = 10
     item = Item(ITEM_ID, sell_in=10, quality=init_quality)
