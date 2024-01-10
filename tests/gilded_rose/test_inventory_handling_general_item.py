@@ -28,9 +28,12 @@ QUALITY_LIMITS = QualityLimits()
     (original.Item, original.GildedRose),
     (oop_items.Item, oop_inventory.GildedRose),
     (struct_items.Item, struct_inventory.GildedRose),
-    (validated_items.Item, struct_inventory.GildedRose)
+    (validated_items.Item, struct_inventory.GildedRose),
+    pytest.param((validated_items.Item, original.GildedRose), marks=pytest.mark.xfail(reason='failing test raises item rule violation'))
     ],
-    ids=['original', 'oop', 'fp', 'validators'])
+    ids=['original', 'oop', 'fp',
+         'validators with struct inventory',
+         'validators with original inventory'])
 def make_testcase(request):
     def factory(name, sell_in, quality):
         item = request.param[0](name, sell_in, quality)
