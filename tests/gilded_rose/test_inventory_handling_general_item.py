@@ -1,5 +1,7 @@
 import pytest
-from devbg2024.gilded_rose import Item, GildedRose
+import devbg2024.gilded_rose as original
+import devbg2024.item_objects as oop_items
+import devbg2024.objects_inventory as oop_inventory
 from typing import NamedTuple
 
 ITEM_ID = 'General Item'
@@ -19,34 +21,35 @@ SELL_IN_DECREASE = SellInDecreaseRates()
 QUALITY_DEGRADE = QualityDegradeRates()
 QUALITY_LIMITS = QualityLimits()
 
-@pytest.fixture
-def inventory():
-    return GildedRose([])
+@pytest.fixture(params=[
+    (original.Item, original.GildedRose),
+    (oop_items.Item, oop_inventory.GildedRose)
+    ],
+    ids=['original', 'oop'])
+def make_testcase(request):
+    def factory(name, sell_in, quality):
+        item = request.param[0](name, sell_in, quality)
+        inventory = request.param[1]([item])
+        inventory.update_quality()
+        return item
+    return factory
 
-def test_sell_in_decrease_rate(inventory: GildedRose):
+def test_sell_in_decrease_rate(make_testcase):
     init_sell_in = 10
-    item = Item(ITEM_ID, sell_in=init_sell_in, quality=10)
-    inventory.items.append(item)
-    inventory.update_quality()
+    item = make_testcase(ITEM_ID, init_sell_in, 10)
     assert item.sell_in == init_sell_in - SELL_IN_DECREASE.normal
 
-def test_quality_degrade_rate_within_sell_in(inventory: GildedRose):
+def test_quality_degrade_rate_within_sell_in(make_testcase):
     init_quality = 10
-    item = Item(ITEM_ID, sell_in=10, quality=init_quality)
-    inventory.items.append(item)
-    inventory.update_quality()
+    item = make_testcase(ITEM_ID, 10, init_quality)
     assert item.quality == init_quality - QUALITY_DEGRADE.normal
 
-def test_quality_degrade_rate_after_sell_in(inventory: GildedRose):
+def test_quality_degrade_rate_after_sell_in(make_testcase):
     init_quality = 10
-    item = Item(ITEM_ID, sell_in=0, quality=init_quality)
-    inventory.items.append(item)
-    inventory.update_quality()
+    item = make_testcase(ITEM_ID, 0, init_quality)
     assert item.quality == init_quality - QUALITY_DEGRADE.expired
 
-def test_quality_is_never_negative(inventory: GildedRose):
+def test_quality_is_never_negative(make_testcase):
     init_quality = 0
-    item = Item(ITEM_ID, sell_in=0, quality=init_quality)
-    inventory.items.append(item)
-    inventory.update_quality()
+    item = make_testcase(ITEM_ID, 0, init_quality)
     assert item.quality >= 0

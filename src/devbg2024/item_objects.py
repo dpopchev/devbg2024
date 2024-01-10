@@ -1,43 +1,53 @@
 from abc import ABC, abstractmethod
 
-class ItemStrategy(ABC):
-    QUALITY_MIN = 0
-    QUALITY_MAX = 50
-
+class SellInStrategy(ABC):
     @abstractmethod
     def __call__(self, value: int) -> int:
         ...
 
-class GeneralSellInStrategy(ItemStrategy):
+class QualityStrategy(ABC):
+    MIN = 0
+    MAX = 50
+    RATE = 1
+
+    @abstractmethod
+    def __call__(self, value: int, sell_in: int) -> int:
+        ...
+
+class GeneralSellInStrategy(SellInStrategy):
     def __call__(self, value: int) -> int:
         if value == 0:
             return 0
         return value - 1
 
-class GeneralQualityStrategy(ItemStrategy):
-    def __call__(self, value: int) -> int:
-        if value >= self.QUALITY_MAX:
-            return self.QUALITY_MAX
+class GeneralQualityStrategy(QualityStrategy):
+    def __call__(self, value: int, sell_in: int) -> int:
+        if value >= self.MAX:
+            return self.MAX
 
-        if value <= self.QUALITY_MIN:
-            return self.QUALITY_MIN
+        if value <= self.MIN:
+            return self.MIN
 
-        return value - 1
+        return value - self.RATE if sell_in > 0 else value - 2*self.RATE
 
 class Item:
     def __init__(self, name: str, sell_in: int, quality: int):
         self.name = name
         self.sell_in = sell_in
         self.quality = quality
-        self._sell_in_strategy: ItemStrategy = GeneralSellInStrategy()
-        self._quality_strategy: ItemStrategy = GeneralQualityStrategy()
+        self._sell_in_strategy: SellInStrategy = GeneralSellInStrategy()
+        self._quality_strategy: QualityStrategy = GeneralQualityStrategy()
 
     def update_sell_in(self) -> None:
         self.sell_in = self._sell_in_strategy(self.sell_in)
         return
 
-    def change_sell_in_strategy(self, strategy: ItemStrategy) -> None:
+    def change_sell_in_strategy(self, strategy: SellInStrategy) -> None:
         self._sell_in_strategy = strategy
 
-    def change_quality_strategy(self, strategy: ItemStrategy) -> None:
+    def update_quality(self) -> None:
+        self.quality = self._quality_strategy(self.quality, self.sell_in)
+        return
+
+    def change_quality_strategy(self, strategy: QualityStrategy) -> None:
         self._quality_strategy = strategy
