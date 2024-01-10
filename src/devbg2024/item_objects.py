@@ -8,7 +8,7 @@ class SellInStrategy(ABC):
 class QualityStrategy(ABC):
     MIN = 0
     MAX = 50
-    RATE = 1
+    DEGRADE_RATE = 1
 
     @abstractmethod
     def __call__(self, value: int, sell_in: int) -> int:
@@ -28,7 +28,7 @@ class GeneralQualityStrategy(QualityStrategy):
         if value <= self.MIN:
             return self.MIN
 
-        return value - self.RATE if sell_in > 0 else value - 2*self.RATE
+        return value - self.DEGRADE_RATE if sell_in > 0 else value - 2*self.DEGRADE_RATE
 
 class Item:
     def __init__(self, name: str, sell_in: int, quality: int):
