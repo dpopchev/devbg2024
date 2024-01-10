@@ -2,6 +2,8 @@ import pytest
 import devbg2024.gilded_rose as original
 import devbg2024.item_objects as oop_items
 import devbg2024.objects_inventory as oop_inventory
+import devbg2024.item_structs as struct_items
+import devbg2024.structs_inventory as struct_inventory
 from typing import NamedTuple
 
 ITEM_ID = 'General Item'
@@ -23,15 +25,16 @@ QUALITY_LIMITS = QualityLimits()
 
 @pytest.fixture(params=[
     (original.Item, original.GildedRose),
-    (oop_items.Item, oop_inventory.GildedRose)
+    (oop_items.Item, oop_inventory.GildedRose),
+    (struct_items.Item, struct_inventory.GildedRose)
     ],
-    ids=['original', 'oop'])
+    ids=['original', 'oop', 'fp'])
 def make_testcase(request):
     def factory(name, sell_in, quality):
         item = request.param[0](name, sell_in, quality)
         inventory = request.param[1]([item])
         inventory.update_quality()
-        return item
+        return inventory.tail()
     return factory
 
 def test_sell_in_decrease_rate(make_testcase):

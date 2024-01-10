@@ -20,3 +20,6 @@ class GildedRose:
         for item in self._items:
             item.update_sell_in()
             item.update_quality()
+
+    def tail(self):
+        return self._items[-1]
