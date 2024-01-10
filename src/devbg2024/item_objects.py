@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
 class ItemStrategy(ABC):
-    MIN = 0
-    MAX = 50
+    QUALITY_MIN = 0
+    QUALITY_MAX = 50
 
     @abstractmethod
     def __call__(self, value: int) -> int:
@@ -16,11 +16,11 @@ class GeneralSellInStrategy(ItemStrategy):
 
 class GeneralQualityStrategy(ItemStrategy):
     def __call__(self, value: int) -> int:
-        if value >= self.MAX:
-            return self.MAX
+        if value >= self.QUALITY_MAX:
+            return self.QUALITY_MAX
 
-        if value <= self.MIN:
-            return self.MIN
+        if value <= self.QUALITY_MIN:
+            return self.QUALITY_MIN
 
         return value - 1
 
