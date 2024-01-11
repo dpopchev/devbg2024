@@ -41,6 +41,8 @@ ls docs/* | entr sh -c 'echo compile: $(date +%H:%M:%S) && make presentation && 
 
 - [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
 - [Goblin](https://www.deviantart.com/futurerender/art/Orc-Selfie-12-Bedroom-956964946)
+- [Descriptors howto](https://docs.python.org/3/howto/descriptor.html)
+- [Metaprogramming in python](https://developer.ibm.com/tutorials/ba-metaprogramming-python/)
 
 ## License
 
