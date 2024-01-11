@@ -1,5 +1,5 @@
 ---
-topic: TopicMetaclasses
+topic: Metaprogramming
 title: Metaprogramming
 subtitle: what I should have known from the start
 author: Dimitar Popchev
@@ -9,18 +9,18 @@ date: \today
 fontsize: 8pt
 fontfamilyoptions: default
 section-titles: false
-toc: true
+toc: false
 aspectratio: 169
 header-includes:
-  - \AtBeginSection[] { \begin{frame}<beamer>{Outline} \tableofcontents[currentsection,currentsubsection] \end{frame} }
+  - \AtBeginSection[] { \begin{frame}<beamer>{} \tableofcontents[currentsection] \end{frame} }
 ---
 
-# Agenda
+# Preface
 
 ## Metaclasses
 
 ###
-*Metaclasses are deeper magic than 99 of users should ever worry about.
+*Metaclasses are deeper magic than 99% of users should ever worry about.
 If you wonder whether you need them, you don’t.*\
 \hfill --Time Peters
 
@@ -72,13 +72,45 @@ my @sorted = map  { $_->[0] }
 - Raymond Hettinger
 - ...
 
-# Gilded Rose Kata
+# Prologue
 
-## Introduction
+## Gilded Rose
 
 - `Gilded Rose` is a small inn ran by Allison
 - Trade finest goods on the side
-- Inventory system was implemented by a guy named Leeroy
+- Inventory system was implemented by a no-nonsense type named Leeroy
+\onslide<2->{\item He moved on to new adventures}
+\onslide<2->{\item The goblin helped with the implementation}
+\onslide<3->{\item The system needs a small update}
+
+
+## The system
+
+```python
+...
+if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
+    if item.quality > 0:
+        if item.name != "Sulfuras, Hand of Ragnaros":
+            item.quality = item.quality - 1
+else:
+    if item.quality < 50:
+        item.quality = item.quality + 1
+        if item.name == "Backstage passes to a TAFKAL80ETC concert":
+            if item.sell_in < 11:
+                if item.quality < 50:
+                    item.quality = item.quality + 1
+            if item.sell_in < 6:
+                if item.quality < 50:
+                    item.quality = item.quality + 1
+if item.name != "Sulfuras, Hand of Ragnaros":
+    item.sell_in = item.sell_in - 1
+if item.sell_in < 0:
+    if item.name != "Aged Brie":
+        if item.name != "Backstage passes to a TAFKAL80ETC concert":
+            if item.quality > 0:
+                if item.name != "Sulfuras, Hand of Ragnaros":
+...
+```
 
 ## Software Crisis
 
@@ -88,30 +120,51 @@ my @sorted = map  { $_->[0] }
 which are beyond our capabilities and our theories and methods of design and
 production at this time...\
 ...We should not expect the production of such systems to be easy.*\
-\hfill Kenneth Kolence, pg 71
+\hfill --Kenneth Kolence, pg 71
 
 ## Advices
 
-### NATO Conference 68
-
+\onslide<1->{
+\begin{block}{NATO Conference 68}
 Define a subset of the system which is small enough to bring to an operational
 state...then build on that subsystem. This strategy requires that the system be
 designed in modules which can be realized, tested, and modified independently.
+\end{block}
+}
 
-### UNIX Philosophy
-
+\onslide<2->{
+\begin{block}{UNIX Philosophy}
 Write programs that do one thing and do it well. Write programs to work
 together. Write programs to handle text streams, because that is an universal
 interface.
+\end{block}
+}
 
-### Agile manifesto
-
+\onslide<3->{
+\begin{block}{Agile manifesto}
 Deliver working software frequently, from a couple of weeks to a couple of
 months, with a preference to the shorter timescale.
+\end{block}
+}
 
-## Requirements
+# The What
 
-### What they have
+## System is doing
+
+- All items have a `SellIn` value which denotes number of days within to sell it
+- All items have a `Quality` value which denotes how valuable the item is
+- At the end of each day our system lowers both values for every item
+
+
+# The How
+
+# The Why
+
+# Epilogue
+
+# THE REST
+
+## What they have
 
 - System tracking the inventory of items
 - Item sell in time measured in decreasing number of days
