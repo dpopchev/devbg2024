@@ -238,7 +238,7 @@ self._items = [ general_quality_strategy(item) for item in self._items]
 ...
 ```
 
-## Item as object
+## Item as an object
 ```python
 # src/devbg2024/item_objects.py
 ...
@@ -257,7 +257,7 @@ class Item:
 ...
 ```
 
-## Item as object
+## Item as an object
 ```python
 # src/devbg2024/item_objects.py
 ...
@@ -282,7 +282,7 @@ class GeneralQualityStrategy(QualityStrategy):
 ...
 ```
 
-## Item as structure
+## Item as a structure
 ```python
 # src/devbg2024/item_structs.py
 ...
@@ -296,7 +296,7 @@ ItemStrategy = Callable[[Item], Item]
 ...
 ```
 
-## Item as structure
+## Item as a structure
 ```python
 # src/devbg2024/item_structs.py
 ...
@@ -321,94 +321,61 @@ def make_quality_strategy(min: int = 0,
 ...
 ```
 
-## Constraints
+# The Why
+
+## Constraints on item
+
+- Should item with negative sell in or quality even exists?
+- Item is used as category, should one with arbitrary name exit?
+
+## Validated item
+```python
+# src/devbg2024/item_validated.py
+class NameValidator:
+    def __init__(self, *options):
+        self.options = set(options)
+
+    def  __get__(self,obj,_):
+        return obj._name
+
+    def __set__(self, obj, value):
+        if value not in self.options:
+            raise ValueError(f'Item name must be one of {self.options}, got {value}')
+        obj._name = value
+...
+class Item:
+    name = NameValidator('General Item')
+    ...
+    def __init__(self, name, sell_in, quality):
+        self.name = name
+        ...
+```
+
+## Angry Shareholder
 
 ![Goblin doesn't believe in shared code ownership](data/goblin_not_into_peer_programming.jpg){width=50%}
 
+## Item as a type
+```python
+# src/devbg2024/item_type.py
+FIELDS = {
+    'name': NameValidator('General Item'),
+    'sell_in': SellInValidator(),
+    'quality': QualityValidator(0, 50)
+}
 
-# The Why
+class ItemType(type):
+    def __new__(cls, name, bases, namespace):
+        namespace.update(FIELDS)
+        return super().__new__(cls, name, bases, namespace)
 
-# Epilogue
-
-# THE REST
-
-## What they have
-
-- System tracking the inventory of items
-- Item sell in time measured in decreasing number of days
-- Item quality measuring how valuable it is
-- System lowers both remaining time and quality everyday
-
-### What they want
-
-- Control quality change rate
-- Quality maximum and minimums
-
-# Refactoring
-
-## Lookup
-
-```python:src/devbg2024/gilded_rose.py
-# src/devbg2024/gilded_rose.py
-class GildedRose(object):
-    def __init__(self, items):
-        self.items = items
-    def update_quality(self):
-        ...
-class Item:
+class Item(metaclass=ItemType):
     def __init__(self, name, sell_in, quality):
         ...
 ```
 
-# Sample slides
+# Epilogue
 
-## SAMPLE SLIDES
+## Metaclasses
 
-SAMPLE SLIDES MARK
-
-## Overalys
-
-\only<1,3>{
-This text appears on the first and third versions of the slide, but not the second.
-INSIDE HERE YOU USE ANY LATEX
-INSTEAD OF only you can use onslide etc
-}
-
-This uses beamer's highlighting command to \alert<2>{draw attention here}, but only on the second slide.
-
-\note<2>{
-
-Notes can also have overlay specs.
-}
-
-## Include image
-
-![Flow chart](img/Untitled 1.png){ width=250px }
-
-
-## Code
-
-```{#code1 .jsx}
-Bot.send("Are you going out to play?")
-async function respond(inputText){
-    if (inputText == "yes"){
-        Bot.send("Wear a hat");
-    }
-    else {
-        Bot.send("ok");
-    }
-
- }
-```
-
-What we learned. - Bot.send() method - if else statements.
-\
-We should be able to refer [code](#code1)
-
-## Math
-
-The well known Pythagorean theorem $x^2 + y^2 = z^2$ was  proved to be invalid for other exponents.
-Meaning the next equation has no integer solutions:
-$$x^n + y^n = z^n$$
-
-Can AI, help find near misses for this equation?
+Usefull tool
