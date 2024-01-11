@@ -7,7 +7,7 @@ Notes and code for my [devbg talk](https://dev.bg/event/python-metaprogramming-o
 ### Requirements
 
 - pandoc
-- some tex libs, tbd
+- some tex libs, texlive with texlive-extratex should be fine
 
 ### Install
 
