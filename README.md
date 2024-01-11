@@ -43,6 +43,7 @@ ls docs/* | entr sh -c 'echo compile: $(date +%H:%M:%S) && make presentation && 
 - [Goblin](https://www.deviantart.com/futurerender/art/Orc-Selfie-12-Bedroom-956964946)
 - [Descriptors howto](https://docs.python.org/3/howto/descriptor.html)
 - [Metaprogramming in python](https://developer.ibm.com/tutorials/ba-metaprogramming-python/)
+- [A primer on python metaclasses](https://jakevdp.github.io/blog/2012/12/01/a-primer-on-python-metaclasses/)
 
 ## License
 

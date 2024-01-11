@@ -323,6 +323,18 @@ def make_quality_strategy(min: int = 0,
 
 # The Why
 
+###
+
+*There are two classes of system designers.\
+The first, if given five problems will solve them one at a time.\
+The second will come back and announce that these aren’t the real problems, and
+will eventually propose a solution to the single problem which underlies the
+original five.\
+This is the ‘system type’ who is great during the initial stages of a design project.
+However, you had better get rid of him after the first six months if you want to get
+a working system.*\
+\hfill --Kinslow, pg 15
+
 ## Constraints on item
 
 - Should item with negative sell in or quality even exists?
@@ -376,6 +388,13 @@ class Item(metaclass=ItemType):
 
 # Epilogue
 
-## Metaclasses
+##
 
-Usefull tool
+- Demo on python class anatomy
+- Demo on clojure
+- Demo on descriptors
+- QnA
+
+##
+
+Thank you!
