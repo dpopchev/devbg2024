@@ -238,7 +238,7 @@ self._items = [ general_quality_strategy(item) for item in self._items]
 ...
 ```
 
-## Item object
+## Item as object
 ```python
 # src/devbg2024/item_objects.py
 ...
@@ -257,7 +257,7 @@ class Item:
 ...
 ```
 
-## Item object
+## Item as object
 ```python
 # src/devbg2024/item_objects.py
 ...
@@ -279,6 +279,45 @@ class GeneralQualityStrategy(QualityStrategy):
             return self.MIN
 
         return value - self.DEGRADE_RATE if sell_in > 0 else value - 2*self.DEGRADE_RATE
+...
+```
+
+## Item as structure
+```python
+# src/devbg2024/item_structs.py
+...
+class Item(NamedTuple):
+    name: str
+    sell_in: int
+    quality: int
+
+StrategyPredicate = Callable[[Item], bool]
+ItemStrategy = Callable[[Item], Item]
+...
+```
+
+## Item as structure
+```python
+# src/devbg2024/item_structs.py
+...
+def make_quality_strategy(min: int = 0,
+                          max: int = 50,
+                          degrade_rate: int = 1,
+                          predicate: StrategyPredicate = lambda _: True) -> ItemStrategy:
+    def strategy(item: Item) -> Item:
+        if not predicate(item):
+            return item
+
+        if item.quality >= max:
+            return Item(item.name, item.sell_in, max)
+
+        if item.quality <= min:
+            return Item(item.name, item.sell_in, min)
+
+        quality = item.quality - degrade_rate if item.sell_in > 0 else item.quality - 2*degrade_rate
+        return Item(item.name, item.sell_in, quality)
+
+    return strategy
 ...
 ```
 
