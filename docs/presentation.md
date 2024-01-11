@@ -20,7 +20,7 @@ header-includes:
 ## Metaclasses
 
 ###
-*Metaclasses are deeper magic than 99% of users should ever worry about.
+*Metaclasses are deeper magic than 99% of users should ever worry about.\
 If you wonder whether you need them, you don’t.*\
 \hfill --Time Peters
 
@@ -149,12 +149,62 @@ months, with a preference to the shorter timescale.
 
 # The What
 
-## System is doing
+## System specification
+
+### All Items
 
 - All items have a `SellIn` value which denotes number of days within to sell it
 - All items have a `Quality` value which denotes how valuable the item is
 - At the end of each day our system lowers both values for every item
 
+### Specific Items
+
+- Once the sell by date has passed, `Quality` degrades twice as fast
+- The `Quality` of an item is never negative
+- `Aged Brie` actually increases in Quality the older it gets
+- The `Quality` of an item is never more than 50
+- `Sulfuras`, being a legendary item, never has to be sold or decreases in `Quality`
+- `Backstage passes`, increases in `Quality` as its `SellIn` value approaches;
+
+## Requirement test
+
+```python
+def test_sell_in(item, inventory):
+    """SellIn is lowered"""
+    initial_sell_in = item.sell_in
+    inventory.update()
+    assert item.sell_in < initial_sell_in
+```
+
+## Behavior
+
+### Items
+- Tracks sell in time measured in number of days
+- Measures how valuable it is with `quality`
+
+### System
+- Tracks the inventory of items
+- Updates inventory everyday according to its type
+
+## Behavior test
+
+```python
+# tests/gilded_rose/test_inventory_handling_general_item.py
+...
+ITEM_ID = 'General Item'
+SELL_IN_DECREASE = {normal: 1}
+TestcaseFactory = Callable[[str, int, int], Item]
+...
+def test_sell_in_decrease_rate_is_normal(make_testcase: TestcaseFactory):
+    init_sell_in = 10
+    item = make_testcase(ITEM_ID, init_sell_in, 10)
+    assert item.sell_in == init_sell_in - SELL_IN_DECREASE['normal']
+...
+```
+
+## New feature
+
+- `Conjured` items should degrade in `Quality` twice as fast as normal items
 
 # The How
 
