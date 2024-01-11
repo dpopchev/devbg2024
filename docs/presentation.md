@@ -6,11 +6,13 @@ author: Dimitar Popchev
 institute: GlobalFoundries
 theme: Frankfurt
 date: \today
-fontsize: 10pt
+fontsize: 8pt
 fontfamilyoptions: default
 section-titles: false
 toc: true
 aspectratio: 169
+header-includes:
+  - \AtBeginSection[] { \begin{frame}<beamer>{Outline} \tableofcontents[currentsection,currentsubsection] \end{frame} }
 ---
 
 # Agenda
@@ -49,7 +51,7 @@ my @sorted = map  { $_->[0] }
 - Software engineering
 - Development process
 - Programming paradigms
-- Refactoring to patterns
+- Refactoring
 
 ## Resources
 
