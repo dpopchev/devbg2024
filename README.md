@@ -40,6 +40,7 @@ ls docs/* | entr sh -c 'echo compile: $(date +%H:%M:%S) && make presentation && 
 ## Acknowledgement
 
 - [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main)
+- [Goblin](https://www.deviantart.com/futurerender/art/Orc-Selfie-12-Bedroom-956964946)
 
 ## License
 

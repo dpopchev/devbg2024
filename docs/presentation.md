@@ -321,6 +321,11 @@ def make_quality_strategy(min: int = 0,
 ...
 ```
 
+## Constraints
+
+![Goblin doesn't believe in shared code ownership](data/goblin_not_into_peer_programming.jpg){width=50%}
+
+
 # The Why
 
 # Epilogue
