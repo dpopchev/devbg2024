@@ -208,6 +208,80 @@ def test_sell_in_decrease_rate_is_normal(make_testcase: TestcaseFactory):
 
 # The How
 
+## Programming paradigms
+
+### Procedural
+```python
+# src/devbg2024/gilded_rose.py
+...
+if item.quality > 0:
+    if item.name != "Sulfuras":
+        item.quality = item.quality - 1
+...
+```
+
+### Object oriented
+```python
+# src/devbg2024/objects_inventory.py
+...
+item.update_sell_in()
+item.update_quality()
+...
+```
+
+### Functional
+```python
+# src/devbg2024/objects_inventory.py
+...
+self._items = [ general_sell_in_strategy(item) for item in self._items]
+self._items = [ general_quality_strategy(item) for item in self._items]
+...
+```
+
+## Item object
+```python
+# src/devbg2024/item_objects.py
+...
+class Item:
+    def __init__(self, name: str, sell_in: int, quality: int):
+        ...
+        self._sell_in_strategy: SellInStrategy = GeneralSellInStrategy()
+        self._quality_strategy: QualityStrategy = GeneralQualityStrategy()
+
+    def update_quality(self) -> None:
+        self.quality = self._quality_strategy.apply(self.quality, self.sell_in)
+        return
+
+    def change_quality_strategy(self, strategy: QualityStrategy) -> None:
+        self._quality_strategy = strategy
+...
+```
+
+## Item object
+```python
+# src/devbg2024/item_objects.py
+...
+class QualityStrategy(ABC):
+    MIN = 0
+    MAX = 50
+    DEGRADE_RATE = 1
+
+    @abstractmethod
+    def apply(self, value: int, sell_in: int) -> int:
+        ...
+
+class GeneralQualityStrategy(QualityStrategy):
+    def apply(self, value: int, sell_in: int) -> int:
+        if value >= self.MAX:
+            return self.MAX
+
+        if value <= self.MIN:
+            return self.MIN
+
+        return value - self.DEGRADE_RATE if sell_in > 0 else value - 2*self.DEGRADE_RATE
+...
+```
+
 # The Why
 
 # Epilogue
