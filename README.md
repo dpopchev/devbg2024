@@ -12,7 +12,7 @@ Notes and code for my [devbg talk](https://dev.bg/event/python-metaprogramming-o
 ### Install
 
 ```
-git clone --depth 1 https://github.com/dpopchev/devbg2024.git
+git clone --depth 1 https://github.com/dpopchev/gilded-rose-kata.git
 cd devbg2024
 make development
 make check
