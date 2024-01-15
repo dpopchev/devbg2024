@@ -1,8 +1,8 @@
 build
 .coverage
 devbg2024.egg-info
+.ipynb_checkpoints/
 __pycache__
 .stamps
-.venv
-.ipynb_checkpoints/
 Untitled.ipynb
+.venv
