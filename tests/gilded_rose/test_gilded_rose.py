@@ -1,6 +1,6 @@
 import unittest
 
-from devbg2024.gilded_rose import Item, GildedRose
+from kata.gilded_rose import Item, GildedRose
 
 
 class GildedRoseTest(unittest.TestCase):

@@ -1,5 +1,5 @@
 import pytest
-from devbg2024.gilded_rose import Item, GildedRose
+from kata.gilded_rose import Item, GildedRose
 from typing import NamedTuple
 
 ITEM_ID = 'Sulfuras'

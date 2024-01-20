@@ -211,7 +211,7 @@ def test_sell_in_decrease_rate_is_normal(make_testcase: TestcaseFactory):
 
 ### Procedural
 ```python
-# src/devbg2024/gilded_rose.py
+# src/kata/gilded_rose.py
 ...
 if item.quality > 0:
     if item.name != "Sulfuras":
@@ -221,7 +221,7 @@ if item.quality > 0:
 
 ### Object oriented
 ```python
-# src/devbg2024/objects_inventory.py
+# src/kata/objects_inventory.py
 ...
 item.update_sell_in()
 item.update_quality()
@@ -230,7 +230,7 @@ item.update_quality()
 
 ### Functional
 ```python
-# src/devbg2024/objects_inventory.py
+# src/kata/objects_inventory.py
 ...
 self._items = [ general_sell_in_strategy(item) for item in self._items]
 self._items = [ general_quality_strategy(item) for item in self._items]
@@ -239,7 +239,7 @@ self._items = [ general_quality_strategy(item) for item in self._items]
 
 ## Item as an object
 ```python
-# src/devbg2024/item_objects.py
+# src/kata/item_objects.py
 ...
 class Item:
     def __init__(self, name: str, sell_in: int, quality: int):
@@ -258,7 +258,7 @@ class Item:
 
 ## Item as an object
 ```python
-# src/devbg2024/item_objects.py
+# src/kata/item_objects.py
 ...
 class QualityStrategy(ABC):
     MIN = 0
@@ -283,7 +283,7 @@ class GeneralQualityStrategy(QualityStrategy):
 
 ## Item as a structure
 ```python
-# src/devbg2024/item_structs.py
+# src/kata/item_structs.py
 ...
 class Item(NamedTuple):
     name: str
@@ -297,7 +297,7 @@ ItemStrategy = Callable[[Item], Item]
 
 ## Item as a structure
 ```python
-# src/devbg2024/item_structs.py
+# src/kata/item_structs.py
 ...
 def make_quality_strategy(min: int = 0,
                           max: int = 50,
@@ -341,7 +341,7 @@ a working system.*\
 
 ## Validated item
 ```python
-# src/devbg2024/item_validated.py
+# src/kata/item_validated.py
 class NameValidator:
     def __init__(self, *options):
         self.options = set(options)
@@ -368,7 +368,7 @@ class Item:
 
 ## Item as a type
 ```python
-# src/devbg2024/item_type.py
+# src/kata/item_type.py
 FIELDS = {
     'name': NameValidator('General Item'),
     'sell_in': SellInValidator(),
@@ -389,7 +389,7 @@ class Item(metaclass=ItemType):
 
 ##
 
-- `src/devbg2024/klass_construction.py`
+- `src/kata/klass_construction.py`
 - Q&A
 
 ##

@@ -1,11 +1,11 @@
 import pytest
-import devbg2024.gilded_rose as original
-import devbg2024.item_objects as oop_items
-import devbg2024.objects_inventory as oop_inventory
-import devbg2024.item_structs as struct_items
-import devbg2024.structs_inventory as struct_inventory
-import devbg2024.item_validated as validated_items
-import devbg2024.item_type as typed_items
+import kata.gilded_rose as original
+import kata.item_objects as oop_items
+import kata.objects_inventory as oop_inventory
+import kata.item_structs as struct_items
+import kata.structs_inventory as struct_inventory
+import kata.item_validated as validated_items
+import kata.item_type as typed_items
 from typing import NamedTuple
 
 ITEM_ID = 'General Item'
