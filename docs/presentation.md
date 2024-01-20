@@ -56,7 +56,7 @@ my @sorted = map  { $_->[0] }
 
 ###
 
-- [`dpopchev/devbg2024`](https://github.com/dpopchev/devbg2024) repo at github
+- [`code and presentation at dpopchev/gilded-rose-kata`](https://github.com/dpopchev/gilded-rose-kata.git)
 - [Gilded Rose Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
 
 ###
