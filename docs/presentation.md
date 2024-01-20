@@ -389,9 +389,7 @@ class Item(metaclass=ItemType):
 
 ##
 
-- Demo on python class anatomy
-- Demo on clojure
-- Demo on descriptors
+- `src/devbg2024/klass_construction.py`
 - Q&A
 
 ##
