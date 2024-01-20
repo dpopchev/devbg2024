@@ -1,30 +1,51 @@
-# devbg2024
+# Gilded Rose Kata
 
-Notes and code for my [devbg talk](https://dev.bg/event/python-metaprogramming-or-what-i-should-have-known-from-the-start/).
+Programming paradigm kata based on famous [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main).
+The ideas were presented in [devbg talk](https://dev.bg/event/python-metaprogramming-or-what-i-should-have-known-from-the-start/) about `Metaprogramming`.
 
 ## Installation
 
 ### Requirements
 
 - pandoc
-- some tex libs, texlive with texlive-extratex should be fine
+- texlive with texlive-extratex should be fine
 
 ### Install
 
-```
+```bash
 git clone --depth 1 https://github.com/dpopchev/gilded-rose-kata.git
 cd devbg2024
+```
+
+#### Project
+
+Build project into dedicated virtual environment python.
+
+```bash
 make development
 make check
+```
+
+Expect failing tests. The project is a kata itself to practice refactoring to:
+
+- object oriented programming
+- functional programming
+- metaprogramming
+
+#### Presentation
+
+Build the presentation
+
+```bash
 make presentation
 ```
 
 ## Agenda
 
-- Software engineering background: NATO conference 68 and UNIX vs agile
-- Test vs Behaviour driven development
-- OOP vs FP
-- Metaclasses (career development vs reduction)
+- Software engineering
+- Test/Behaviour driven development
+- Object oriented vs Functional vs Procedural programming
+- Career development vs reduction using metaclasses
 
 ## Usage
 
