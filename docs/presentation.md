@@ -1,5 +1,5 @@
 ---
-topic: Metaprogramming
+title: Metaprogramming
 subtitle: what I should have known from the start
 author: Dimitar Popchev
 institute: GlobalFoundries
