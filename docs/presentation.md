@@ -392,7 +392,7 @@ class Item(metaclass=ItemType):
 - Demo on python class anatomy
 - Demo on clojure
 - Demo on descriptors
-- QnA
+- Q&A
 
 ##
 
