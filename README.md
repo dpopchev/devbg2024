@@ -1,7 +1,7 @@
 # Gilded Rose Kata
 
 Programming paradigm kata based on famous [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/main).
-The ideas were presented in [devbg talk](https://dev.bg/event/python-metaprogramming-or-what-i-should-have-known-from-the-start/) about `Metaprogramming`.
+The ideas were presented in [devbg talk](https://dev.bg/event/python-metaprogramming-or-what-i-should-have-known-from-the-start/) about **Metaprogramming**.
 
 ## Installation
 
@@ -14,7 +14,7 @@ The ideas were presented in [devbg talk](https://dev.bg/event/python-metaprogram
 
 ```bash
 git clone --depth 1 https://github.com/dpopchev/gilded-rose-kata.git
-cd devbg2024
+cd gilded-rose-kata
 ```
 
 #### Project
